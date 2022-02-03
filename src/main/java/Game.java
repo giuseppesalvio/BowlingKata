@@ -1,4 +1,5 @@
 public class Game {
+
     void roll(int pinnedKnoked) {
 
     }
@@ -6,4 +7,5 @@ public class Game {
     int score() {
         return 0;
     }
+
 }

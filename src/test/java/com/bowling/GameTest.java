@@ -2,6 +2,7 @@ package com.bowling;
 
 import com.bowling.Game;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -61,6 +62,7 @@ class GameTest {
         Assertions.assertEquals(17,game.score());
     }
 
+    @Disabled
     @ParameterizedTest
     @CsvSource({"10,2,2,18"})
     void lancioDueVolteDopoAverFattoStrikeNelTurnoPrecedente(Integer l1,Integer l2,Integer l3,Integer rs){

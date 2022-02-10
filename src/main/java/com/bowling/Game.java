@@ -1,29 +1,30 @@
 package com.bowling;
 
 public class Game {
-    private int numeroBirilliTurnoPrec;
-    private boolean secondoTiro;
-    private boolean spare;
+    private int birilliHitOnPreviousRoll;
+    private boolean isSecondRollOfCurrentFrame;
+    private boolean isSpareOnPreviousFrame;
     private int score=0;
 
+//10 | --> 2--> 2 |
 
+    // |3-->6 | 4 --> 4 |
     void roll(int numBirilli) {
 
-       // 3 7 --> 4
-        if (spare) { //3
+        if (isSpareOnPreviousFrame) {
             score = score + numBirilli + numBirilli;
-            spare = false;
+            isSpareOnPreviousFrame = false;
         }
-        else if (numeroBirilliTurnoPrec +numBirilli != 10){ //1
+        else if (birilliHitOnPreviousRoll +numBirilli != 10){
             score = score + numBirilli;
-            numeroBirilliTurnoPrec = numBirilli;
-            spare = false;
-            secondoTiro = !secondoTiro;
-        } else if (numeroBirilliTurnoPrec +numBirilli == 10) { //2
-            spare = true;
+            birilliHitOnPreviousRoll = numBirilli;
+            isSpareOnPreviousFrame = false;
+            isSecondRollOfCurrentFrame = !isSecondRollOfCurrentFrame;
+        } else if (birilliHitOnPreviousRoll +numBirilli == 10) {
+            isSpareOnPreviousFrame = true;
             score = score + numBirilli;
-            numeroBirilliTurnoPrec = 0;
-            secondoTiro = !secondoTiro;
+            birilliHitOnPreviousRoll = 0;
+            isSecondRollOfCurrentFrame = !isSecondRollOfCurrentFrame;
         }
 
     }

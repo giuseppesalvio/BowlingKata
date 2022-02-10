@@ -1,0 +1,9 @@
+Test list
+1) lancio una volta e abbatto zero birilli.( score = 0 )
+2) lancio una volta e abbatto 4 birilli (score = 4) --> primo tiro
+3) lancio una volta dopo aver fatto spare nel turno precedente (5+5 (in quello prima)--> 10 e poi 4 quindi (score = 10+4+4=18).
+4) lancio due volte dopo aver fatto strike nel turno precedente  (10 --> 2-->2  score=10+2+2 + 2+2) (score = 18).
+5) strike al 10 frame poi fare massimo 3 tiri.
+5) spare al 10 frame poi 1 tiri normale.
+6) 2 tiri al 10 frame poi 0 tiri.
+7) massimo 300 punti e 12 tiri.

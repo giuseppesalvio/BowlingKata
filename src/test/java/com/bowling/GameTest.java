@@ -25,18 +25,45 @@ class GameTest {
         game.roll(4);
         Assertions.assertEquals(4,game.score());
     }
+    @Test
+    void lancio_per_piu_frame_senza_fare_ne_spare_o_strike(){
+        Game game = new Game();
+       // frame 1
+        game.roll(4);
+        game.roll(5);
+        //frame 2
+        game.roll(1);
+        game.roll(3);
+        //frame 3
+        game.roll(1);
+        game.roll(3);
+
+        Assertions.assertEquals(17,game.score());
+    }
     @ParameterizedTest
     @CsvSource({"5,5,4,18","4,4,4,12","0,10,4,18"})
-    void spareTreTiriConsecutivi(Integer l1,Integer l2,Integer l3,Integer rs){
+    void lancioDopoAverFattoSpareNelTurnoPrecedente(Integer l1,Integer l2,Integer l3,Integer rs){
         Game game = new Game();
         game.roll(l1);
         game.roll(l2);
         game.roll(l3);
         Assertions.assertEquals(rs,game.score());
     }
+    @Test
+    void somma_dei_birilli_abbattuti_a_cavallo_tra_2_frame_uguale_a_10_non_va_considerato_come_spare(){
+        Game game = new Game();
+        //frame 1
+        game.roll(3);
+        game.roll(6);
+        //frame 2
+        game.roll(4);
+        game.roll(4);
+        Assertions.assertEquals(17,game.score());
+    }
+
     @ParameterizedTest
     @CsvSource({"10,2,2,18"})
-    void StrakeTreTiriConsecutivi(Integer l1,Integer l2,Integer l3,Integer rs){
+    void lancioDueVolteDopoAverFattoStrikeNelTurnoPrecedente(Integer l1,Integer l2,Integer l3,Integer rs){
         Game game = new Game();
         game.roll(l1);
         game.roll(l2);

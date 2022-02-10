@@ -12,3 +12,15 @@ Write a class com.bowling.Game that has two methods
 
 void roll(int) is called each time the player rolls a ball. The argument is the number of pins knocked down.
 int score() returns the total score for that game.
+
+
+1 --> 2 tentativi max
+2
+3
+4
+5
+6
+7
+8
+9
+10

@@ -5,21 +5,23 @@ public class Game {
     private int birilliHitOnPreviousRollOfCurrentFrame;
     private boolean isSecondRollOfCurrentFrame;
     private boolean isSpareOnPreviousFrame;
+    private boolean isStrikeOnPreviousFrame;
     private int score=0;
 
     public Game() {
         this.birilliHitOnPreviousRoll=0;
     }
 
-//10 | --> 2--> 2 |
-
     // |3-->6 | 4 --> 4 |
     void roll(int numBirilli) {
+        if(numBirilli==10)
+            isStrikeOnPreviousFrame=true;
         if (isSpareOnPreviousFrame) {
             score = score + numBirilli + numBirilli;
             isSpareOnPreviousFrame = false;
         }
-        else if (isSecondRollOfCurrentFrame && birilliHitOnPreviousRoll + numBirilli == 10) {
+
+        else if (hoFattoSpareInCurrentFrame(numBirilli)) {
             isSpareOnPreviousFrame = true;
             score = score + numBirilli;
             isSecondRollOfCurrentFrame = false;
@@ -35,4 +37,9 @@ public class Game {
     int score() {
         return score;
     }
+
+    private boolean hoFattoSpareInCurrentFrame(int numBirilli) {
+        return isSecondRollOfCurrentFrame && birilliHitOnPreviousRoll + numBirilli == 10;
+    }
+
 }

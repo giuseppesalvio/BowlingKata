@@ -62,7 +62,6 @@ class GameTest {
         Assertions.assertEquals(17,game.score());
     }
 
-    @Disabled
     @ParameterizedTest
     @CsvSource({"10,2,2,18"})
     void lancioDueVolteDopoAverFattoStrikeNelTurnoPrecedente(Integer l1,Integer l2,Integer l3,Integer rs){

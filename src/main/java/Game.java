@@ -2,30 +2,30 @@
 public class Game {
 
     private int score;
-    private boolean spare;
+    private boolean previousFrameWasAspare;
     private int actualFrameScore;
     private boolean firstRoll;
     private int frame;
-    private boolean previousRollWasAstrike;
+    private boolean previousFrameWasAstrike;
 
     public Game() {
         this.score = 0;
         this.actualFrameScore = 0;
-        this.spare = false;
+        this.previousFrameWasAspare = false;
         this.firstRoll = true;
         this.frame = 0;
     }
 
     void roll(int pinnedKnoked) {
-        sePrimoTiro();
+        resetFrameScoreIfFirstRoll();
         actualFrameScore += pinnedKnoked;
         score += pinnedKnoked;
         score += getBonus(pinnedKnoked);
-        spare = isSpare();
+        previousFrameWasAspare = isThisASpare();
         firstRoll = !firstRoll;
     }
 
-    private boolean isSpare() {
+    private boolean isThisASpare() {
         return actualFrameScore == 10 && !firstRoll;
     }
 
@@ -34,18 +34,18 @@ public class Game {
     }
 
     private int getBonus(int pinnedKnoked) {
-        if (spare) {
-            spare = false;
+        if (previousFrameWasAspare) {
+            previousFrameWasAspare = false;
             return pinnedKnoked;
         }
         if(isStrike()){
-            previousRollWasAstrike = true;
+            previousFrameWasAstrike = true;
             return 10;
         }
         return 0;
     }
 
-    private void sePrimoTiro() {
+    private void resetFrameScoreIfFirstRoll() {
         if (firstRoll) {
             actualFrameScore = 0;
         }

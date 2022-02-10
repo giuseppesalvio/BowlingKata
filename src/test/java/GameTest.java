@@ -31,7 +31,9 @@ class GameTest {
     void whenSpareFirstFrame() {
         game = new Game();
         game.roll(8);
+        assertEquals(8 ,game.score());
         game.roll(2);
+        assertEquals(8+2 ,game.score());
         game.roll(3);
         assertEquals(8+2+3+3 ,game.score());
     }
